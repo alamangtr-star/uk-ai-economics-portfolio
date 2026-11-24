@@ -1,10 +1,42 @@
 # UK AI Economic Exposure Observatory — Public Portfolio
 
-Independent applied AI economics and research engineering demonstration. This repository is deliberately separate from the unpublished research project. It contains only a static site and an illustrative economic simulator. No empirical results, manuscript, research datasets, private code or downloads are included. The simulator defaults are hypothetical and not calibrated to the study.
+Independent applied AI economics and research engineering demonstration. This repository is deliberately separate from the unpublished research project. It contains a static website, an interactive economic simulator and a reproducible Python econometrics demonstration. No empirical results, manuscript, research datasets, private code or downloads are included. The simulator defaults are hypothetical and not calibrated to the study.
 
 ## Run locally
 
 Open `index.html` in a browser. No installation, API key, network request or server is needed for the simulator.
+## Python Econometrics Demo
+
+A reproducible demonstration of applied economic analysis and econometric modelling using Python, pandas, NumPy and statsmodels.
+
+### Analytical Features
+
+- Ordinary Least Squares (OLS)
+- Weighted Least Squares (WLS)
+- HC3 robust standard errors
+- Confidence intervals
+- Leave-one-out sensitivity analysis
+- Automated data validation and unit testing
+
+### Install dependencies
+
+```bash
+python3 -m pip install -r requirements-python-demo.txt
+```
+
+### Run the econometric analysis
+
+```bash
+python3 python_econometrics_demo.py
+```
+
+### Run automated tests
+
+```bash
+python3 -m unittest -v test_python_econometrics_demo
+```
+
+All demonstration data are synthetic. No unpublished research findings, confidential datasets or private research code are included.
 
 ## Publish
 
