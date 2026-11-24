@@ -1,0 +1,7 @@
+'use strict';
+const calc=({n,q,t,r,f,v})=>{const potential=n*1500*q/100*t/100*28;const gross=potential*r/100;const cost=f+n*v;return {gross,cost,net:gross-cost,breakEven:potential>0?100*cost/potential:cost===0?0:null};};
+if(typeof module!=='undefined')module.exports=calc;
+if(typeof document!=='undefined'){
+const el=id=>document.getElementById(id);const money=v=>v.toLocaleString('en-GB',{style:'currency',currency:'GBP',maximumFractionDigits:0});
+function render(){const fields=['n','q','t','r','f','v'];if(!el('inputs').checkValidity())return;const x=Object.fromEntries(fields.map(k=>[k,Number(el(k).value)]));for(const k of ['n','q','t','r'])el(k+'Label').textContent=x[k];const y=calc(x);for(const k of ['gross','cost','net'])el(k).textContent=money(y[k]);el('breakEven').textContent=y.breakEven===null?'Not attainable':y.breakEven.toFixed(1)+'%';const max=Math.max(1,y.gross,y.cost);for(const k of ['gross','cost']){el(k+'Bar').style.width=100*y[k]/max+'%';el(k+'Text').textContent=money(y[k]);}el('interpretation').textContent=y.net>=0?'Under these assumptions, gross time-equivalent value covers modelled costs.':'Under these assumptions, gross time-equivalent value does not cover modelled costs.';}
+el('inputs').addEventListener('input',render);el('inputs').addEventListener('reset',()=>requestAnimationFrame(render));el('inputs').addEventListener('submit',e=>e.preventDefault());render();}
